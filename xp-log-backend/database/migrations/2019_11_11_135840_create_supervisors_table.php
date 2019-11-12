@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Entries extends Migration
+class CreateSupervisorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class Entries extends Migration
      */
     public function up()
     {
-        Schema::create('entries', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('badge');
-            $table->string('media');
+        Schema::create('supervisors', function (Blueprint $table) {
+            $table->bigIncrements('supervisor_id');
             $table->integer('student_id');
-            $table->text('text');
-            $table->enum('status',['prive', 'public', 'uploaded']);
-            $table->timestamps();
+            $table->integer('teacher_id');
         });
     }
 
@@ -31,6 +27,6 @@ class Entries extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entries');
+        Schema::dropIfExists('supervisors');
     }
 }
