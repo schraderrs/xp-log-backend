@@ -15,4 +15,13 @@ class Entry extends Model
     {
       return $this->belongsToMany('App\Badge');
     }
+
+    function getEntry(entry_id){
+      data = this.db.get('SELECT * FROM entries WHERE entry_id = entry_id')
+      return data
+    }
+
+    function addEntry(){
+
+    }
 }

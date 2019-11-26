@@ -14,7 +14,7 @@ class CreatePointersTable extends Migration
     public function up()
     {
         Schema::create('pointers', function (Blueprint $table) {
-            $table->bigIncrements('pointer_id');
+            $table->bigIncrements('id');
             $table->integer('entry_id');
             $table->integer('tag_id');
         });

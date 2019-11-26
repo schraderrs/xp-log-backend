@@ -14,7 +14,7 @@ class CreateAchievementsTable extends Migration
     public function up()
     {
         Schema::create('achievements', function (Blueprint $table) {
-            $table->bigIncrements('achievement_id');
+            $table->bigIncrements('id');
             $table->integer('entry_id');
             $table->integer('badge_id');
         });

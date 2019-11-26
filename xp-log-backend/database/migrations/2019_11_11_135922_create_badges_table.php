@@ -14,10 +14,10 @@ class CreateBadgesTable extends Migration
     public function up()
     {
         Schema::create('badges', function (Blueprint $table) {
-            $table->bigIncrements('badge_id');
+            $table->bigIncrements('id');
             $table->string('sticker');
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

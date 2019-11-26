@@ -10,4 +10,8 @@ class Student extends Model
   {
     return $this->belongsToMany('App\Teacher');
   }
+
+  protected $fillable = [
+      'name', 'email', 'password', 'biography'
+  ];
 }

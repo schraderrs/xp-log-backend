@@ -14,7 +14,7 @@ class CreateSupervisorsTable extends Migration
     public function up()
     {
         Schema::create('supervisors', function (Blueprint $table) {
-            $table->bigIncrements('supervisor_id');
+            $table->bigIncrements('id');
             $table->integer('student_id');
             $table->integer('teacher_id');
         });

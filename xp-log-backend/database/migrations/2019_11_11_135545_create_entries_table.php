@@ -14,13 +14,13 @@ class CreateEntriesTable extends Migration
     public function up()
     {
         Schema::create('entries', function (Blueprint $table) {
-            $table->bigIncrements('entry_id');
+            $table->bigIncrements('id');
+            $table->text('body');
+            $table->enum('status',['draft', 'offline', 'online']);
             $table->integer('badge_id');
             $table->integer('media_id');
             $table->integer('student_id');
             $table->integer('comment_id');
-            $table->text('body');
-            $table->enum('status',['draft', 'offline', 'online']);
             $table->timestamps();
         });
     }
