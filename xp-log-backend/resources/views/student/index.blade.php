@@ -30,10 +30,30 @@
         <td>{{$row['email']}}</td>
         <td><a href="{{action('StudentController@edit',
           $row['id'])}}">Edit</a></td>
-        <td></td>
+        <td>
+          <form method="post" class="delete_form" action="{{action('StudentController@destroy', $row['id'])}}">
+            {{csrf_field()}}
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="symbit" class="btn btn-danger">Delete</button>
+          </form>
+        </td>
       </tr>
       @endforeach
   </div>
 </div>
+<script)
+$(document).ready(function(){
+  $('.delete_form').on('submit', function(){
+    if(confirm('Weet je het zeker kerel?'))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  });
+});
+</script>
 
 @endsection

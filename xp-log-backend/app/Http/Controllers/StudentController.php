@@ -71,7 +71,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $students = Student::find($id);
+        $student = Student::find($id);
         return view('student.edit', compact('student', 'id'));
     }
 
@@ -84,18 +84,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-          'name'       =>       'required',
-          'email'      =>       'required',
-      ]);
-      $student = Student::find($id);
-      $student->name = $request->get('name');
-      $student->email = $request->get('email');
-      $student->save();
-      return redirect()->route('student.index')->with('success', 'Is gewijzigd kerel');
-
+        $this->validate($request, [
+            'name'    =>  'required',
+            'email'     =>  'required'
+        ]);
+        $student = Student::find($id);
+        $student->name = $request->get('name');
+        $student->email = $request->get('email');
+        $student->save();
+        return redirect()->route('student.index')->with('success', 'Is aangepast broer');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -104,6 +102,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->route('student.index')->with('succes', 'Houdoe');
     }
 }
