@@ -13,7 +13,9 @@ class EntryController extends Controller
      */
     public function index()
     {
-        //
+        $entries = Entry:all()->toArray();
+        return view('entries.index', compact('entries'))
+
     }
 
     /**
@@ -23,7 +25,7 @@ class EntryController extends Controller
      */
     public function create()
     {
-        //
+        return view('entry.create')
     }
 
     /**
@@ -34,7 +36,16 @@ class EntryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'name'       =>       'required',
+          'email'      =>       'required',
+          'password'   =>       'required'
+        ]);
+        $entry = new Entry([
+          'entry'     =>        $request->get('entry')
+        ])
+        $entry->save();
+        return redirect()->route('student.index')->with('succes', 'Nieuwe entry aangemaakt')
     }
 
     /**
@@ -56,7 +67,8 @@ class EntryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $entry = Entry::find($id);
+        return view('entry.edit', compact('entry', 'id'));
     }
 
     /**
@@ -68,7 +80,14 @@ class EntryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+          'name'    =>  'required',
+          'email'     =>  'required'
+        ]);
+        $entry = Entry::find($id);
+        $entry->entry = $request->get('entry');
+        $entry->save();
+        return redirect()->route('student.index')->with('success', 'Is aangepast broer');
     }
 
     /**
@@ -79,6 +98,8 @@ class EntryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $entry = Entry::find($id);
+        $entry->delte();
+        return redirect()->route('student.index')->with('succes', 'Doei entry')
     }
 }
