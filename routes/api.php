@@ -19,5 +19,5 @@ use Illuminate\Http\Request;
 use App/Student;
 
 Route::get('/test/{id}', function(Student $students){
-  return $students
+  return $students;
 });
