@@ -18,6 +18,4 @@ use Illuminate\Http\Request;
 // });
 use App\Student;
 
-Route::get('/test/{students}', function(Student $students){
-  return $students;
-});
+Route::get('/test/{students}', 'StudentController@show');
